@@ -18,6 +18,16 @@ $(".btn").click(function() {
     checkAnswer(userClickedPattern.length-1);
 })
 
+$(".start").click(function() {
+    startOver();
+    $("h1").text("Level 0");
+    start = true;
+    setTimeout(() => {
+        nextSequence();
+    }, 1000);
+
+})
+
 
 function playSound(name) {
     // add audio to the selected color 
@@ -33,15 +43,6 @@ function animatePress(currentColour) {
         $("#" + currentColour).removeClass("pressed");
     }, 100);    
 }
-
-$(document).keypress(function() {
-    $("h1").text("Level 0");
-    start = true;
-    setTimeout(() => {
-        nextSequence();
-    }, 1000);
-    
-})
 
 
 function nextSequence() {
@@ -67,7 +68,7 @@ function nextSequence() {
     } else {
         console.log("wrong");
         startOver();
-        $("h1").text("Game over, Press Any Key to Restart");
+        $("h1").text("Game over, Click Start to Restart");
         playSound("wrong");
         $("body").addClass("game-over");
         setTimeout(() => {
@@ -88,6 +89,10 @@ function startOver() {
     gamePattern = [];
     start = false;
 }
+
+
+
+
 
 
 
